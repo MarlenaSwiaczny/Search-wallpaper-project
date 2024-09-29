@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Wallpapers</h1>
+    </div>
+    <% if (locals.searches) { %>
+        <form action="/" method="GET">
+            <input type="submit" value="Search again">
+          </form>
+    <div class = search_board>
+           <% searches.forEach((search) => { %> 
+            <div class="wallpaper">
+            <a href=<%= search %>>
+                <img src=<%= search %> alt="searched wallpaper img">
+            </a>
+            </div>
+        <% }) %>
+        
+    </div>
+    <% } else { %>
+    
+        <form action="/submit" method="POST">
+        <input type="text" name="word" placeholder="Search wallpaper"/>
+        <input type="submit" value="Search"/>
+    </form>
+    <% } %>
+</body>
+</html>
